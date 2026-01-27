@@ -1,0 +1,126 @@
+/* 1. Page Entrance Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* 2. Layout & Responsiveness */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradient BG */
+  padding: 20px;
+}
+
+.signup-card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.signup-card h2 {
+  margin-bottom: 8px;
+  color: #2d3436;
+  font-size: 1.8rem;
+}
+
+.signup-card p {
+  color: #636e72;
+  margin-bottom: 25px;
+}
+
+/* 3. Form & Inputs */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-group {
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #2d3436;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  background-color: #f8f9ff;
+}
+
+/* 4. Button Animation & Hover */
+.signup-button {
+  background: #667eea;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 10px;
+}
+
+.signup-button:hover {
+  background: #5a67d8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.signup-button:active {
+  transform: translateY(0);
+}
+
+.signup-footer {
+  margin-top: 25px;
+  font-size: 0.9rem;
+}
+
+.signup-footer a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* 5. Mobile Adjustments */
+@media (max-width: 480px) {
+  .signup-card {
+    padding: 30px 20px;
+  }
+  
+  .signup-card h2 {
+    font-size: 1.5rem;
+  }
+}

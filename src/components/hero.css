@@ -1,0 +1,218 @@
+/* --- 1. Base Container & Banner --- */
+.hero-container {
+  padding: 20px 5%;
+  background-color: #fcfcfc;
+  overflow-x: hidden;
+}
+
+.hero-banner {
+  height: 400px;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+              url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.banner-content h1 { 
+  font-size: clamp(2.2rem, 6vw, 3.8rem); 
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.shop-now {
+  padding: 14px 35px;
+  font-size: 1rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.shop-now:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* --- 2. Shared Flip Card Logic --- */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  aspect-ratio: 4 / 5; 
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* Interaction Logic */
+@media (hover: hover) {
+  .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.8rem;
+  box-sizing: border-box;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Front Side Styling */
+.flip-card-front {
+  background: white;
+  color: #1a1a1a;
+  border: 1px solid #f0f0f0;
+  justify-content: center;
+  align-items: center;
+}
+
+.hot .flip-card-front {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  border: none;
+}
+
+.product-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 206, 201, 1);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Back Side Styling - FIXED ALIGNMENT */
+.flip-card-back {
+  background-color: #1a1a1a;
+  color: white;
+  transform: rotateY(180deg);
+  justify-content: space-between; /* Keeps back-header at top and button-wrapper at bottom */
+  align-items: center;
+  text-align: center;
+}
+
+.back-header h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #00cec9;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #bdc3c7;
+  line-height: 1.6;
+}
+
+/* --- 3. Unified Button Styling --- */
+.button-wrapper {
+  width: 100%;
+  margin-top: auto;
+  z-index: 5;
+}
+
+.buy-now-btn {
+  background-color: #00cec9;
+  color: #1a1a1a;
+  border: none;
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  background-color: #81ecec;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 206, 201, 0.4);
+}
+
+/* --- 4. Section & Carousel Layouts --- */
+.product-section { margin-bottom: 70px; }
+.product-section h2 { font-size: 1.8rem; margin-bottom: 25px; font-weight: 700; }
+
+.product-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.infinite-section {
+  padding: 80px 0;
+  background: #f9f9f9;
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  padding: 30px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.carousel-track:hover { animation-play-state: paused; }
+
+.carousel-item {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+/* --- 5. Animations & Responsive --- */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  /* (Card Width 280px + Gap 30px) * 6 items = 1860px */
+  100% { transform: translateX(-1860px); } 
+}
+
+@media (max-width: 768px) {
+  .hero-banner { height: 320px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .banner-content h1 { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-container { padding: 15px 4%; }
+  .product-grid { grid-template-columns: 1fr; }
+  .flip-card { aspect-ratio: 1 / 1.1; }
+  .carousel-item { width: 240px; }
+  @keyframes scroll {
+    100% { transform: translateX(calc(-270px * 6)); }
+  }
+}
