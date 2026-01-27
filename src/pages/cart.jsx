@@ -1,7 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'; // 1. Import useNavigate
 import { toast } from 'react-toastify';
-import Footer from '../components/footer';
-import Header from '../components/header';
 import { useCart } from '../pages/CartContext';
 import './cart.css';
 
@@ -73,7 +71,7 @@ function Cart() {
           </div>
         )}
       </div>
-      <Footer />
+      <Footer/>
     </>
   );
 }
