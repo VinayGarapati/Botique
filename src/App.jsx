@@ -3,7 +3,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Import the Provider and Pages
-import About from './pages/about';
 import Cart from './pages/cart';
 import { CartProvider } from './pages/CartContext';
 import Checkout from './pages/checkout';
@@ -32,7 +31,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/about" element={<About />} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/profile" element={<Myprofile/>} />
           <Route path="/orders" element={<Myorders/>} />
