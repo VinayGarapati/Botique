@@ -1,14 +1,15 @@
-import Footer from "../components/footer";
-import Header from "../components/header";
-import Hero from "../components/hero";
+import Footer from '../components/Footer';
+import Header from '../components/header';
+import Hero from '../components/hero';
+
 function Home() {
   return (
     <div>
-        <Header/>
-        <Hero/>
-        <Footer/>
+      <Header />
+      <Hero />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

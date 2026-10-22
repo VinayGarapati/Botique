@@ -1,19 +1,20 @@
-import { Link, useNavigate } from 'react-router-dom'; // 1. Import useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Header from '../components/header';
+import Footer from '../components/Footer';
 import { useCart } from '../pages/CartContext';
 import './cart.css';
 
 function Cart() {
   const { cartItems, removeFromCart, updateQuantity, cartTotal } = useCart();
-  const navigate = useNavigate(); // 2. Initialize the navigate function
+  const navigate = useNavigate();
 
   const handleCheckout = () => {
     if (cartItems.length > 0) {
-      toast.success("Proceeding to Checkout!");
-      // 3. Navigate to the checkout route
-      navigate('/checkout'); 
+      toast.success('Proceeding to Checkout!');
+      navigate('/checkout');
     } else {
-      toast.error("Your cart is empty!");
+      toast.error('Your cart is empty!');
     }
   };
 
@@ -22,7 +23,7 @@ function Cart() {
       <Header />
       <div className="cart-container">
         <h1 className="cart-title">Your Shopping Cart ({cartItems.length})</h1>
-        
+
         {cartItems.length === 0 ? (
           <div className="empty-cart">
             <h2>Your cart is empty</h2>
@@ -44,10 +45,15 @@ function Cart() {
                       <span>{item.quantity}</span>
                       <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
                     </div>
-                    <button className="remove-btn" onClick={() => {
-                      removeFromCart(item.id);
-                      toast.error("Removed from cart");
-                    }}>Remove</button>
+                    <button
+                      className="remove-btn"
+                      onClick={() => {
+                        removeFromCart(item.id);
+                        toast.error('Removed from cart');
+                      }}
+                    >
+                      Remove
+                    </button>
                   </div>
                 </div>
               ))}
@@ -63,7 +69,6 @@ function Cart() {
                 <span>Total</span>
                 <span>${(cartTotal || 0).toFixed(2)}</span>
               </div>
-              {/* 4. Update the onClick handler */}
               <button className="checkout-btn" onClick={handleCheckout}>
                 Checkout
               </button>
@@ -71,7 +76,7 @@ function Cart() {
           </div>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

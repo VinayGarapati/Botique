@@ -4,18 +4,18 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Brand Section */}
         <div className="footer-brand">
           <img src="/logo.png" alt="Logo" className="footer-logo" />
-          <p>Your one-stop shop for high-quality products. Style and comfort delivered to your door.</p>
+          <p>
+            Your one-stop shop for high-quality products. Style and comfort delivered to your door.
+          </p>
           <div className="social-links">
-            <i className="fab fa-facebook"></i>
-            <i className="fab fa-instagram"></i>
-            <i className="fab fa-twitter"></i>
+            <span>f</span>
+            <span>◎</span>
+            <span>x</span>
           </div>
         </div>
 
-        {/* Link Columns */}
         <div className="footer-links">
           <div className="link-group">
             <h3>Shop</h3>
@@ -47,15 +47,15 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2024 YourBrand. All rights reserved.</p>
+        <p>&copy; 2025 YourBrand. All rights reserved.</p>
         <div className="payment-methods">
-          <img src="/visa.svg" alt="Visa" />
-          <img src="/mastercard.svg" alt="Mastercard" />
-          <img src="/paypal.svg" alt="Paypal" />
+          <span>Visa</span>
+          <span>Mastercard</span>
+          <span>PayPal</span>
         </div>
       </div>
     </footer>
   );
 }
 
-export default Footer
+export default Footer;
