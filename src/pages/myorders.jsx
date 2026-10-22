@@ -1,34 +1,31 @@
 import { CheckCircle, Package, Truck } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import Header from '../components/header';
 import './myorders.css';
 
 function Myorders() {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
-  
-  // Logic to restrict access: Check if payment was just completed or user is logged in
+
   const isPaymentDone = localStorage.getItem('payment_success') === 'true';
 
   useEffect(() => {
     if (!isPaymentDone) {
-      // Redirect to home or checkout if they try to access this page without paying
       navigate('/orders');
     } else {
-      // Mock data for orders - in a real app, fetch from your DB
       setOrders([
         {
-          id: "ORD-99281",
-          date: "Jan 27, 2026",
-          status: "Processing",
-          total: 480.20,
+          id: 'ORD-99281',
+          date: 'Jan 27, 2026',
+          status: 'Processing',
+          total: 480.2,
           items: [
-            { name: "saree", price: 160.40, qty: 1, img: "h" },
-            { name: "dress", price: 120.99, qty: 1, img: "" }
-          ]
-        }
+            { name: 'saree', price: 160.4, qty: 1, img: 'h' },
+            { name: 'dress', price: 120.99, qty: 1, img: '' },
+          ],
+        },
       ]);
     }
   }, [isPaymentDone, navigate]);
@@ -72,9 +69,9 @@ function Myorders() {
 
               <div className="order-footer">
                 <div className="tracking-timeline">
-                  <div className="step completed"><CheckCircle size={16}/> Paid</div>
-                  <div className="step active"><Truck size={16}/> Processing</div>
-                  <div className="step"><Package size={16}/> Delivered</div>
+                  <div className="step completed"><CheckCircle size={16} /> Paid</div>
+                  <div className="step active"><Truck size={16} /> Processing</div>
+                  <div className="step"><Package size={16} /> Delivered</div>
                 </div>
                 <div className="order-total">
                   <span>Total Amount</span>

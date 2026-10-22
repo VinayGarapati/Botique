@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import Header from '../components/header';
 import { useCart } from './CartContext';
 import './wishlist.css';
@@ -13,7 +13,7 @@ function Wishlist() {
       <Header />
       <div className="wishlist-container">
         <h1>My Wishlist ({wishlist.length})</h1>
-        
+
         {wishlist.length === 0 ? (
           <div className="empty-wishlist">
             <p>Your wishlist is empty.</p>
@@ -43,4 +43,5 @@ function Wishlist() {
     </>
   );
 }
+
 export default Wishlist;

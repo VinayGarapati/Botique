@@ -1,23 +1,21 @@
 import { Camera, Check, Edit2, Mail, Phone, User } from 'lucide-react';
 import { useRef, useState } from 'react';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import Header from '../components/header';
 import './myprofile.css';
 
 function Myprofile() {
-  // Mock User Data - In a real app, this comes from your Auth Context/Backend
   const [userData, setUserData] = useState({
-    name: "John Doe",
-    email: "john.doe@example.com", // This remains uneditable
-    phone: "+91 9876543210",
-    profilePic: "https://via.placeholder.com/150"
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    phone: '+91 9876543210',
+    profilePic: 'https://via.placeholder.com/150',
   });
 
   const [isEditing, setIsEditing] = useState(false);
   const [tempData, setTempData] = useState({ ...userData });
   const fileInputRef = useRef(null);
 
-  // Handle Profile Picture Change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -32,14 +30,13 @@ function Myprofile() {
   const handleSave = () => {
     setUserData(tempData);
     setIsEditing(false);
-    // Here you would typically call your API to save changes to the database
-    console.log("Profile Updated Successfully");
+    console.log('Profile Updated Successfully');
   };
 
   return (
     <div className="profile-page">
       <Header />
-      
+
       <div className="profile-container">
         <div className="profile-card">
           <div className="profile-header">
@@ -48,22 +45,21 @@ function Myprofile() {
           </div>
 
           <div className="profile-body">
-            {/* Profile Picture Section */}
             <div className="avatar-section">
               <div className="avatar-wrapper">
                 <img src={userData.profilePic} alt="Profile" className="profile-img" />
-                <button 
-                  className="change-pic-btn" 
+                <button
+                  className="change-pic-btn"
                   onClick={() => fileInputRef.current.click()}
                   title="Change Profile Picture"
                 >
                   <Camera size={18} />
                 </button>
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  onChange={handleImageChange} 
-                  hidden 
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleImageChange}
+                  hidden
                   accept="image/*"
                 />
               </div>
@@ -75,17 +71,16 @@ function Myprofile() {
 
             <hr className="divider" />
 
-            {/* Form Fields */}
             <div className="profile-form">
               <div className="input-group">
                 <label><User size={16} /> Full Name</label>
                 <div className="input-wrapper">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={isEditing ? tempData.name : userData.name}
                     readOnly={!isEditing}
                     onChange={(e) => setTempData({ ...tempData, name: e.target.value })}
-                    className={isEditing ? "editable" : ""}
+                    className={isEditing ? 'editable' : ''}
                   />
                 </div>
               </div>
@@ -93,10 +88,10 @@ function Myprofile() {
               <div className="input-group">
                 <label><Mail size={16} /> Email Address</label>
                 <div className="input-wrapper">
-                  <input 
-                    type="email" 
-                    value={userData.email} 
-                    readOnly 
+                  <input
+                    type="email"
+                    value={userData.email}
+                    readOnly
                     className="disabled-input"
                     title="Email cannot be changed"
                   />
@@ -107,12 +102,12 @@ function Myprofile() {
               <div className="input-group">
                 <label><Phone size={16} /> Phone Number</label>
                 <div className="input-wrapper">
-                  <input 
-                    type="tel" 
+                  <input
+                    type="tel"
                     value={isEditing ? tempData.phone : userData.phone}
                     readOnly={!isEditing}
                     onChange={(e) => setTempData({ ...tempData, phone: e.target.value })}
-                    className={isEditing ? "editable" : ""}
+                    className={isEditing ? 'editable' : ''}
                   />
                 </div>
               </div>
@@ -125,7 +120,13 @@ function Myprofile() {
                   <button className="save-btn" onClick={handleSave}><Check size={18} /> Save Changes</button>
                 </>
               ) : (
-                <button className="edit-trigger-btn" onClick={() => { setTempData({...userData}); setIsEditing(true); }}>
+                <button
+                  className="edit-trigger-btn"
+                  onClick={() => {
+                    setTempData({ ...userData });
+                    setIsEditing(true);
+                  }}
+                >
                   <Edit2 size={16} /> Edit Profile
                 </button>
               )}
